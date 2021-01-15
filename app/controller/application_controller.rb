@@ -5,7 +5,15 @@ class ApplicationController < Sinatra::Base
         set :public_dir, "public"
     end
   
-    get "/" do
-        erb :index
+    get '/parks' do
+        @parks = Park.all
+        erb :"parks/index"
     end
-  end
+
+    post '/parks' do
+        #Put in all param keys to initialize new park with.
+        @park = Park.create(name: params["name"],)
+        @park.id
+    end
+
+end
