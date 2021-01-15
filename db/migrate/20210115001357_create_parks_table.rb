@@ -1,6 +1,6 @@
 class CreateParksTable < ActiveRecord::Migration[6.1]
   def change
-    add_table :parks do |t|
+    create_table :parks do |t|
       t.string :name
       t.integer :difficulty_rating
       t.string :geolocation
@@ -13,9 +13,6 @@ class CreateParksTable < ActiveRecord::Migration[6.1]
       t.time :open_time
       t.time :close_time
       t.timestamps
-
-      :name, :difficulty, :geolocation, :vert_park, :stree_park, :skate_spot, :skateboard_permitted, :scooter_permitted, :bike_permitted, :open_time, :close_time
-
     end
   end
 end

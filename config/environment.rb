@@ -1,14 +1,10 @@
 require 'bundler/setup'
-Bundler.require(:default, ENV['SINATRA_ENV'])
+require 'sinatra/activerecord'
+Bundler.require
 
 ActiveRecord::Base.establish_connection(
-
-    :adapter => 'sqlite3',
-    :database => 'db/kickflip.sqlite3d'
+    adapter: 'sqlite3',
+    database: 'db/kickflip.db'
 )
-
-# configure :development do 
-#     set :database, 'sqlite3:db/kickflip.db'
-# end
 
 require_all './app'
