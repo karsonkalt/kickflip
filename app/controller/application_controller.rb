@@ -9,9 +9,13 @@ class ApplicationController < Sinatra::Base
         @parks = Park.all
         erb :"parks/index"
     end
-#figure out how to pass in ID to generate individual pages
+
+    get '/parks/new' do
+        erb :"parks/new"
+    end
+
     get '/parks/:id' do
-        @park = Park.find(id)
+        @park = Park.find(params[:id])
         erb :"parks/park"
     end
 

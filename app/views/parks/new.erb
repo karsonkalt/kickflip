@@ -1,7 +1,36 @@
-<h1>Kickflip</h1>
 <h2>Add New Park</h2>
     <form action="../parks" method="post">
-        <input type ="text" name="title">
-        <textarea name="content"></textarea>
-        <input type="submit" value="create park">
+        <label>Name</label><br>
+        <input type="text" name="name"><br>
+
+        <label>Difficulty Rating</label><br>
+        <input type="text" name="difficulty_rating"><br>
+
+        <label>Street</label><br>
+        <input type="text" name="street"><br>
+
+        <label>City</label><br>
+        <input type="text" name="city"><br>
+
+        <label>State</label><br>
+        <input type="text" name="state"><br><br>
+
+        <label>Park Type</label><br>
+        <input type="radio" name="vert_park" value="true">
+        <label for="">Vert Park</label><br>
+        <input type="radio" name="street_park" value="true">
+        <label for="">Street Park</label><br>
+        <input type="radio" name="skate_spot" value="true">
+        <label for="">Skate Spot</label><br><br>
+        
+        <label>Permitted</label><br>
+        <input type="checkbox" name="skateboard_permitted" value="true">
+        <label for="">Skateboards Permitted</lablel><br>
+        <input type="checkbox" name="scooter_permitted" value="true">
+        <label for="">Scooters Permitted</lablel><br>
+        <input type="checkbox" name="bike_permitted" value="true">
+        <label for="">Bikes Permitted</lablel><br>
+
+
+        <input type="submit" value="Create Park">
     </form>

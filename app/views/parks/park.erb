@@ -1,2 +1,11 @@
-<h2><%=@park.name</h2>
-<p>INFO!</p>
+
+<br><br><br>
+<a href="#" class="btn btn-primary">Favorite this park</a>
+<p>Wrong park info?</p>
+<a href="#" class="btn btn-warning">Update info</a>
+<h2><%= @park.name%> </h2>
+<ul>
+    <% @park.attributes.each do |attribute_name, attribute_value| %>
+        <li><b><%= attribute_name %>: </b><%= attribute_value %></li>
+    <% end %>
+</ul>

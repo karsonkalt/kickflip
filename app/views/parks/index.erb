@@ -1,7 +1,24 @@
-<h1>Kickflip</h1>
-<h2>List of Current Parks</h2>
-<ul>
-    <% @parks.each do |park| %>
-        <li><a href="/parks/<%=park.id%>"><%= park.name %></a></li>
-    <% end %>
-</ul>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2>List of Parks</h2>
+
+        <% @parks.each do |park| %>
+            <div class="card" style="width: 28rem;">
+                <div class="card-body">
+                <h5 class="card-title">
+                    <% if park.id >= Park.all.count - 1 %>
+                        <span class="badge rounded-pill bg-warning text-dark">Recently Added</span>
+                    <% end %>
+                    <%= park.name %>
+                </h5>
+                <h6 class="card-subtitle mb-2 text-muted"><%= park.address %></h6>
+                <a href="/parks/<%=park.id%>" class="btn btn-primary">Skate</a>
+                </div>
+            </div>
+            <br>
+        <% end %>
+
