@@ -3,7 +3,11 @@ class CreateParksTable < ActiveRecord::Migration[5.1]
     create_table :parks do |t|
       t.string :name
       t.integer :difficulty_rating
-      t.string :geolocation
+      t.string :street
+      t.string :city
+      t.string :state
+      t.float :latitude
+      t.float :longitude
       t.boolean :vert_park
       t.boolean :street_park
       t.boolean :skate_spot

@@ -1,5 +1,3 @@
-require_relative './config/enviornment'
+require_relative './config/environment'
 
-use ParkController
-use UserController
 run ApplicationController

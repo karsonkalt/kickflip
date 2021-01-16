@@ -15,7 +15,11 @@ ActiveRecord::Schema.define(version: 20210115001357) do
   create_table "parks", force: :cascade do |t|
     t.string "name"
     t.integer "difficulty_rating"
-    t.string "geolocation"
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.float "latitude"
+    t.float "longitude"
     t.boolean "vert_park"
     t.boolean "street_park"
     t.boolean "skate_spot"
