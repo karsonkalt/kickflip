@@ -9,5 +9,9 @@ class Park < ActiveRecord::Base
         [self.street, self.city, self.state].compact.join(', ')
     end
 
+    def create(params)
+        super(params)
+        self.geocode
+    end
     
 end

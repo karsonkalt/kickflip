@@ -1,35 +1,62 @@
-<h2>Add New Park</h2>
+<br><br><br><br><br><h2>Add New Park</h2>
     <form action="../parks" method="post">
-        <label>Name</label><br>
-        <input type="text" name="name"><br>
+        <label for="name">Name*</label><br>
+        <input id="name" type="text" name="name" required><br>
 
-        <label>Difficulty Rating</label><br>
-        <input type="text" name="difficulty_rating"><br>
+        <label for="difficulty_rating">Difficulty Rating</label><br>
+        <input id="difficulty_rating" type="text" name="difficulty_rating"><br>
 
-        <label>Street</label><br>
-        <input type="text" name="street"><br>
+        <label for="street">Street*</label><br>
+        <input id="street" type="text" name="street" required><br>
 
-        <label>City</label><br>
-        <input type="text" name="city"><br>
+        <label for="city">City*</label><br>
+        <input id="city "type="text" name="city" required><br>
 
-        <label>State</label><br>
-        <input type="text" name="state"><br><br>
+        <label for="state">State*</label><br>
+        <input id="state" type="text" name="state" required><br><br>
+
+        <!-- Change db structure so that not boolean, store as string -->
+        <!-- Should be boolean park or spot -->
+        <!-- vert, street, or both -->
 
         <label>Park Type</label><br>
+        <input type="hidden" name="vert_park" value="false">
         <input type="radio" name="vert_park" value="true">
         <label for="">Vert Park</label><br>
+
+        <input type="hidden" name="street_park" value="false">
         <input type="radio" name="street_park" value="true">
         <label for="">Street Park</label><br>
+
+        <input type="hidden" name="skate_spot" value="false">
         <input type="radio" name="skate_spot" value="true">
-        <label for="">Skate Spot</label><br><br>
+        <label for="">Skate Spot</label>
+        
+        <br><br>
         
         <label>Permitted</label><br>
-        <input type="checkbox" name="skateboard_permitted" value="true">
-        <label for="">Skateboards Permitted</lablel><br>
-        <input type="checkbox" name="scooter_permitted" value="true">
-        <label for="">Scooters Permitted</lablel><br>
-        <input type="checkbox" name="bike_permitted" value="true">
-        <label for="">Bikes Permitted</lablel><br>
+        
+        <input type="hidden" name="skateboard_permitted" value ="false">
+        <input id="skateboard_permitted" type="checkbox" name="skateboard_permitted" value="true">
+        <label for="skateboard_permitted">Skateboards Permitted</lablel><br>
+
+        
+        <input type="hidden" name="scooter_permitted" value="false">
+        <input id="scooter_permitted" type="checkbox" name="scooter_permitted" value="true">
+        <label for="scooter_permitted">Scooters Permitted</lablel><br>
+        
+        
+        <input type="hidden" name="bike_permitted" value ="false">
+        <input id="bike_permitted" type="checkbox" name="bike_permitted" value="true">
+        <label for="bike_permitted">Bikes Permitted</lablel><br>
+        
+
+
+        <label for="open_time">Open Time</label><br>
+        <input id="open_time" type="text" name="open_time"><br>
+
+        <label for="close_time">Close Time</label><br>
+        <input id="close_time" type="text" name="close_time"><br>
 
 
         <input type="submit" value="Create Park">
