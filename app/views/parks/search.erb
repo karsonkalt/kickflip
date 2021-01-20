@@ -1,0 +1,18 @@
+<br><br><br><h1>Search for <%= @search %></h1>
+
+        <% @parks.each do |park| %>
+            <div class="card" style="width: 28rem;">
+                <div class="card-body">
+                <h5 class="card-title">
+                    <% if park.id >= Park.all.count - 1 %>
+                        <span class="badge rounded-pill bg-warning text-dark">Recently Added</span>
+                    <% end %>
+                    <%= park.name %>
+                </h5>
+                <h6 class="card-subtitle mb-2 text-muted"><%= park.address %></h6>
+                <a href="/parks/<%=park.id%>" class="btn btn-primary">Skate</a>
+                </div>
+            </div>
+            <br>
+        <% end %>
+

@@ -8,6 +8,20 @@ class ApplicationController < Sinatra::Base
     get '/' do
         erb :"index"
     end
+
+    post '/parks/search' do
+
+        # Every query should be a new search object, not this. This should me in models.
+        @search = params[:search].downcase
+        @search_geoloc = Park.near(@search)
+        @search_attr = Park.all.select do |park|
+            #searches for exact matches in the Park.all array
+            park.name.downcase.include?(@search) || park.city.downcase.include?(@search) || park.state.downcase.include?(@search)
+            
+        end
+        @parks = (@search_geoloc + @search_attr).uniq
+        erb :"parks/search"
+    end
   
     get '/parks' do
         @parks = Park.all
