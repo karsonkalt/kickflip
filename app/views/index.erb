@@ -1,4 +1,24 @@
-<br>
-<br>
-<br>
-<h1>Homepage</h1>
+<div id="homepage_background">
+    <div id="homepage_search">
+        <h2>Find a Skatepark</h2>
+        <form action="/parks/search" method="post">
+        <input class="form-control me-2" type="search" placeholder="try Salt Lake City, UT" aria-label="Search" name="search">
+        <hr>
+        <h6>Advanced Search</h6>
+        <label>Park Type</label><br>
+        <input type="hidden" name="vert_park" value="false">
+        <input type="radio" name="vert_park" value="true">
+        <label for="">Vert Park</label><br>
+
+        <input type="hidden" name="street_park" value="false">
+        <input type="radio" name="street_park" value="true">
+        <label for="">Street Park</label><br>
+
+        <input type="hidden" name="skate_spot" value="false">
+        <input type="radio" name="skate_spot" value="true">
+        <label for="">Skate Spot</label><br>
+
+        <button class="btn btn-primary" type="submit">Search</button><br>
+        </form>
+    </div>
+</div>

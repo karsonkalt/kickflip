@@ -1,0 +1,20 @@
+html {
+    height: 100vh;
+}
+
+#homepage_background {
+    background-image: url("../img/home_backsplash.jpeg");
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+#homepage_search {
+    position: absolute;
+    margin-top: 150px;
+    margin-left: 150px;
+    width: 400px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+}
