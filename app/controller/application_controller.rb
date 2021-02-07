@@ -12,6 +12,7 @@ class ApplicationController < Sinatra::Base
     post '/parks/search' do
 
         #This isn't "RESTFUL" it should be ?q= <something like this>
+        #separation of concerns with search. move out of the controller.
 
         # Every query should be a new search object, not this. This should me in models.
         @search = params[:search].downcase
