@@ -18,3 +18,5 @@ gem "rake", "~> 13.0"
 gem "bundler", "~> 2.1"
 gem "sqlite3", "~> 1.3.6"
 gem "activerecord", "~> 5.1"
+
+gem "bcrypt", "~> 3.1"
