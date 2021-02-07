@@ -27,16 +27,17 @@ class Park < ActiveRecord::Base
 
     #Custom Methods
     def top_users
-        counts = Hash.new(0) #creates a new hash and sets default value to 0, {} default value is nil
+        counts = Hash.new(0) #Creates a new hash and sets default value to 0, {} default value is nil
+        
         self.users.each do |user|
             counts[user.username] += 1
         end
+        
         counts_array = counts.map do |username, count|
             [User.find_by(username: username), count]
         end
 
-        counts_array.sort_by {|username, count| -count} #returns an array sorted most skated parks, to least skated parks logged
-        #Returns array of arrays sorted top to bottom
+        counts_array.sort_by {|username, count| -count} #Returns array of arrays sorted by User who has most SkateSessions to least
     end
 
     def top_x_users(x)
