@@ -2,6 +2,37 @@ html {
     height: 100vh;
 }
 
+nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50px;
+    padding: 0 25px 0 25px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.page-title {
+    margin-right: 25px;
+}
+
+.nav-link {
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.main-nav {
+    margin-right: 15px;
+}
+
 #homepage_background {
     background-image: url("../img/home_backsplash.jpeg");
     background-size: cover;
