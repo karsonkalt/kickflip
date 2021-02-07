@@ -19,3 +19,15 @@
   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyABbcAemIlenVyPVzTGzTPaWmYkvFPxRtU
     &q=<%=@park.latitude%>,<%=@park.longitude%>" allowfullscreen>
 </iframe>
+
+<div>
+<h2>Top Skaters</h2>
+    <% @park.top_x_users(5).each do |user_array| %>
+        <div class="card" style="width: 18rem; margin-bottom: 15px;">
+            <div class="card-body">
+                <h4 class="card-title"><%= user_array[0].username %></h4>
+                <p class="card-text"><%= user_array[1] %> Skate Sessions logged<p>
+            </div>
+        </div>
+    <% end %>
+</div>

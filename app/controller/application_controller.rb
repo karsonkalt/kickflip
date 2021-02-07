@@ -12,17 +12,10 @@ class ApplicationController < Sinatra::Base
     post '/parks/search' do
 
         #This isn't "RESTFUL" it should be ?q= <something like this>
-        #separation of concerns with search. move out of the controller.
 
-        # Every query should be a new search object, not this. This should me in models.
-        @search = params[:search].downcase
-        @search_geoloc = Park.near(@search)
-        @search_attr = Park.all.select do |park|
-            #searches for exact matches in the Park.all array
-            park.name.downcase.include?(@search) || park.city.downcase.include?(@search) || park.state.downcase.include?(@search)
-            
-        end
-        @parks = (@search_geoloc + @search_attr).uniq
+        search = Search.new(params[:search])
+        @query = search.query
+        @parks = search.all_results
         erb :"parks/search"
     end
   
