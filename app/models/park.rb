@@ -27,7 +27,10 @@ class Park < ActiveRecord::Base
         self.users.each do |user|
             counts[user.username] += 1
         end
-        counts.sort_by {|username, count| count}
+        counts.sort_by {|username, count| -count} #returns an array sorted most skate sessions logged, to least skate sessions logged
     end
-    
+
+    def top_x_users(x)
+        self.top_users[0..(x-1)]
+    end
 end
