@@ -10,19 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210207194621) do
+ActiveRecord::Schema.define(version: 20210207211900) do
 
   create_table "parks", force: :cascade do |t|
     t.string "name"
-    t.integer "difficulty_rating"
     t.string "street"
     t.string "city"
     t.string "state"
     t.float "latitude"
     t.float "longitude"
-    t.boolean "vert_park"
-    t.boolean "street_park"
-    t.boolean "skate_spot"
     t.boolean "skateboard_permitted"
     t.boolean "scooter_permitted"
     t.boolean "bike_permitted"
