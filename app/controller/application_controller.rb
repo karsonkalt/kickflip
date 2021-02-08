@@ -30,13 +30,18 @@ class ApplicationController < Sinatra::Base
 
     get '/parks/:id' do
         @park = Park.find(params[:id])
-        erb :"parks/park"
+        erb :"parks/show"
     end
 
     post '/parks' do
         #Put in all param keys to initialize new park with.
         @park = Park.create(params)
         redirect "/parks/#{@park.id}"
+    end
+
+    get '/users/:id' do
+        @user = User.find(params[:id])
+        erb :"users/show"
     end
 
 end
