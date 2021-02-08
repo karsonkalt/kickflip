@@ -114,6 +114,12 @@ h2 {
     font-weight: 700;
     font-style: italic;
     margin:0 0 10px 0;
+    color: #343434;
+}
+
+h3 {
+    font-family: 'Roboto';
+    font-weight: 700;
     color: #4C4C4C;
 }
 
@@ -178,8 +184,18 @@ h4 {
     color: #949494;
 }
 
+.badge {
+    background-color: #E0E0E0;
+    color: #757575;
+    border-radius: 15px;
+    padding: 5px;
+    font-size: 10px;
+}
 
-
+.top-skater {
+    text-decoration: none;
+    color: #0060D0
+}
 
 
 

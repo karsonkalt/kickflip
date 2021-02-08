@@ -66,12 +66,7 @@
 
 <div class="small-column card">
 <h2>Top Skaters</h2>
-    <% @park.top_x_users(5).each do |user_array| %>
-        <div class="nothing" style="width: 18rem; margin-bottom: 15px;">
-            <div class="card-body">
-                <h4 class="card-title"><%= user_array[0].username %></h4>
-                <p class="card-text"><%= user_array[1] %> Skate Sessions logged<p>
-            </div>
-        </div>
+    <% @park.top_x_users(15).each do |user_array| %>
+            <h3><%= user_array[1] %>  <a class="top-skater" href="/"><%= user_array[0].username %></a></h3>
     <% end %>
 </div>
