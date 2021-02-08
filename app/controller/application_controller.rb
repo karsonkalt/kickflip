@@ -3,6 +3,7 @@ class ApplicationController < Sinatra::Base
     configure do
         set :views, "app/views"
         set :public_dir, "public"
+        enable :sessions
     end
 
     get '/' do
@@ -42,6 +43,17 @@ class ApplicationController < Sinatra::Base
     get '/users/:id' do
         @user = User.find(params[:id])
         erb :"users/show"
+    end
+
+    get '/login' do
+        erb :"sessions/login"
+    end
+
+    #sessions are not persisting??
+    post '/login' do
+        user = User.find_by(email: params["email"])
+        session[:user_id] = user.id
+        redirect "/users/#{user.id}"
     end
 
 end
