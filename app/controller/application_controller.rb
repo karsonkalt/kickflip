@@ -4,6 +4,7 @@ class ApplicationController < Sinatra::Base
         set :views, "app/views"
         set :public_dir, "public"
         enable :sessions
+        set :session_secret, "password"
     end
 
     get '/' do
@@ -41,6 +42,7 @@ class ApplicationController < Sinatra::Base
     end
 
     get '/users/:id' do
+        binding.pry
         @user = User.find(params[:id])
         erb :"users/show"
     end
@@ -55,5 +57,19 @@ class ApplicationController < Sinatra::Base
         session[:user_id] = user.id
         redirect "/users/#{user.id}"
     end
+
+    get '/logout' do
+        session.delete(:user_id)
+        redirect "/"
+    end
+
+    error Sinatra::NotFound do
+        redirect "/"
+    end
+
+    #helpers block do
+    # current user ||= find user 
+    # logged_in?
+    #end
 
 end
