@@ -42,8 +42,8 @@ class ApplicationController < Sinatra::Base
     end
 
     get '/users/:id' do
-        binding.pry
         @user = User.find(params[:id])
+        binding.pry
         erb :"users/show"
     end
 
@@ -67,9 +67,16 @@ class ApplicationController < Sinatra::Base
         redirect "/"
     end
 
-    #helpers block do
-    # current user ||= find user 
-    # logged_in?
-    #end
+
+    #how are the helper methods returning stuff?
+    helpers do
+        def current_user
+            @current_user ||= User.find_by_id(session[:user_id])
+        end
+
+        def logged_in?
+            !!current_user
+        end
+    end
 
 end
