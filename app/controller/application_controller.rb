@@ -27,6 +27,7 @@ class ApplicationController < Sinatra::Base
     end
 
     get '/parks/new' do
+        redirect_if_not_logged_in
         erb :"parks/new"
     end
 
@@ -79,6 +80,12 @@ class ApplicationController < Sinatra::Base
 
         def logged_in?
             !!current_user
+        end
+
+        def redirect_if_not_logged_in
+            if logged_in? == false
+                redirect "/"
+            end
         end
     end
 
