@@ -23,6 +23,7 @@
     </div>
     <div class="navbar-right-items"> 
       <% if logged_in? == false %>
+        <a class="secondary-link" href="/signup">Signup</a>
         <a class="action-link" href="/login">Login</a>
       <% else %>
         <% if current_user.admin_status == true %>

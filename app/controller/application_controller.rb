@@ -10,7 +10,9 @@ class ApplicationController < Sinatra::Base
 
     get '/' do
         if logged_in?
-            redirect "/users/#{current_user.id}" 
+            @parks = Park.all
+            erb :"parks/index"
+            # redirect "/users/#{current_user.id}" 
         else
             @parks = Park.all
             erb :"parks/index"
@@ -71,7 +73,21 @@ class ApplicationController < Sinatra::Base
         @user = User.find(params[:id])
         erb :"users/show"
     end
+
+    get '/users/:id/edit' do
+        @user = User.find(params[:id])
+        redirect_if_user_not_authorized(@user)
+        erb :"users/edit"
+    end
     
+    patch '/users/:id' do
+        user = User.find(params[:id])
+        user.username = params[:username]
+        #Build user.password method
+        user.email = params[:email]
+        user.save
+        redirect "/users/#{user.id}"
+    end
 
     post '/skate-sessions' do
         park_id = params["park_id"].to_i
@@ -98,6 +114,27 @@ class ApplicationController < Sinatra::Base
         redirect "/"
     end
 
+    get '/signup' do
+        redirect_if_logged_in
+        erb :"users/new"
+    end
+
+    post '/users' do
+        if User.find_by_username(params[:username]) || User.find_by_email(params[:email])
+            #flash an error
+            binding.pry
+            redirect "/signup"
+        else
+            user = User.new
+            #set the password
+            user.username = params[:username]
+            user.email = params[:email]
+            user.save
+            session[:user_id] = user.id
+            redirect "/"
+        end
+    end
+
     error Sinatra::NotFound do
         redirect "/"
     end
@@ -115,6 +152,18 @@ class ApplicationController < Sinatra::Base
 
         def redirect_if_not_logged_in
             if logged_in? == false
+                redirect "/"
+            end
+        end
+
+        def redirect_if_logged_in
+            if logged_in? == true
+                redirect "/"
+            end
+        end
+
+        def redirect_if_user_not_authorized(user)
+            if user.id != current_user.id
                 redirect "/"
             end
         end
