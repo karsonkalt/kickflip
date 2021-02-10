@@ -8,7 +8,12 @@ class ApplicationController < Sinatra::Base
     end
 
     get '/' do
-        erb :"index"
+        if logged_in?
+            redirect "/users/#{current_user.id}" 
+        else
+            @parks = Park.all
+            erb :"parks/index"
+        end
     end
 
     post '/parks/search' do
