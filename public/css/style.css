@@ -72,6 +72,17 @@ nav {
     color: #004691;
 }
 
+.disabled-link {
+    font-size: 20px;
+    text-decoration: none;
+    font-family: 'Unica One';
+    background-color: #cfcfcf;
+    color: white;
+    padding: 5px 25px;
+    border-radius: 15px;
+    border: none;
+}
+
 .page-body {
     background-color: #EEEEEE;
     display: flex;

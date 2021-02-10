@@ -5,6 +5,7 @@ class ApplicationController < Sinatra::Base
         set :public_dir, "public"
         enable :sessions
         set :session_secret, "password"
+        set :method_override, true
     end
 
     get '/' do
@@ -47,9 +48,35 @@ class ApplicationController < Sinatra::Base
         redirect "/parks/#{@park.id}"
     end
 
+    get '/parks/:id/edit' do
+        redirect_if_not_admin
+        @park = Park.find(params[:id])
+        erb :"parks/edit"
+    end
+
+    patch '/parks/:id' do
+        park = Park.find(params[:id])
+        park.name = params[:name]
+        park.city = params[:city]
+        park.state = params[:state]
+        park.skateboard_permitted = params[:skateboard_permitted]
+        park.scooter_permitted = params[:scooter_permitted]
+        park.bike_permitted = params[:bike_permitted]
+        park.geocode
+        park.save
+        redirect "/parks/#{park.id}"
+    end
+
     get '/users/:id' do
         @user = User.find(params[:id])
         erb :"users/show"
+    end
+    
+
+    post '/skate-sessions' do
+        park_id = params["park_id"].to_i
+        SkateSession.create(user_id: current_user.id, park_id: park_id)
+        redirect "/parks/#{park_id}"
     end
 
     get '/login' do
@@ -88,6 +115,12 @@ class ApplicationController < Sinatra::Base
 
         def redirect_if_not_logged_in
             if logged_in? == false
+                redirect "/"
+            end
+        end
+
+        def redirect_if_not_admin
+            if logged_in? == false || current_user.admin_status == false
                 redirect "/"
             end
         end

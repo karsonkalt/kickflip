@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210210153250) do
+ActiveRecord::Schema.define(version: 20210210203846) do
 
   create_table "parks", force: :cascade do |t|
     t.string "name"
@@ -22,8 +22,6 @@ ActiveRecord::Schema.define(version: 20210210153250) do
     t.boolean "skateboard_permitted"
     t.boolean "scooter_permitted"
     t.boolean "bike_permitted"
-    t.time "open_time"
-    t.time "close_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

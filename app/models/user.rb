@@ -34,4 +34,22 @@ class User < ActiveRecord::Base
         end
     end
 
+    def most_recent_skate_session
+        self.skate_sessions.max_by {|skate_session| skate_session[:created_at]}
+    end
+
+    def minutes_since_most_recent_skate_session
+        time = Time.now - self.most_recent_skate_session.created_at
+        time = time/60
+        time.to_i
+    end
+
+    def mintutes_to_wait_to_log_skate_session
+        5 - self.minutes_since_most_recent_skate_session
+    end
+
+    def can_record_skate_session
+        self.mintutes_to_wait_to_log_skate_session > 0 ? false : true
+    end
+
 end
