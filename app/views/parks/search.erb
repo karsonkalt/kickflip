@@ -1,18 +1,23 @@
-<br><br><br><h1>Search for <%= @query %></h1>
-
+<div class="medium-column">
+    <div class="card padded-card">
+        <h1>Search results for <span class="search-query">"<%= @query %>"</span></h1>
         <% @parks.each do |park| %>
-            <div class="card" style="width: 28rem;">
-                <div class="card-body">
-                <h5 class="card-title">
-                    <% if park.id >= Park.all.count - 1 %>
-                        <span class="badge rounded-pill bg-warning text-dark">Recently Added</span>
-                    <% end %>
-                    <%= park.name %>
-                </h5>
-                <h6 class="card-subtitle mb-2 text-muted"><%= park.address %></h6>
-                <a href="/parks/<%=park.id%>" class="btn btn-primary">Skate</a>
+            <a href="/parks/<%=park.id%>">
+                <div class ="sub-card">
+                    <h3><%= park.name %></h3>
+                    <h4 class=""><%= park.address %></h4>
                 </div>
-            </div>
-            <br>
+            </a>
         <% end %>
+    </div>
+</div>
 
+<div class="medium-column">
+    <div class="card padded-card">
+        <h1>Find a Park</h1>
+        <form action="/parks/search" method="post">
+            <input class="text-input search-text" type="search" name="search">
+            <button class="action-link" type="submit">Search</button>
+        </form>
+    </div>
+</div>

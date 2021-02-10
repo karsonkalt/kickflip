@@ -97,6 +97,12 @@ nav {
     width: 485px;
 }
 
+.single-medium-column {
+    width: 100%;
+    display:flex;
+    justify-content: center;
+}
+
 .stacked-container {
     display: flex;
     flex-direction: column;
@@ -134,6 +140,11 @@ nav {
 .card-item {
     display: inline-block;
     margin-bottom: 30px;
+}
+
+.search-query {
+    font-weight: 400;
+    font-size: smaller;
 }
 
 .sub-card {
@@ -202,6 +213,15 @@ nav {
 
 .checkbox-label {
     margin-left: 15px;
+}
+
+.search-text {
+    width: 300px;
+    margin-right: 10px;
+}
+
+.login-text {
+    width: 330px; 
 }
 
 h1 {
