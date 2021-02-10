@@ -37,6 +37,7 @@ class ApplicationController < Sinatra::Base
 
     post '/parks' do
         #Put in all param keys to initialize new park with.
+        binding.pry
         @park = Park.create(params)
         redirect "/parks/#{@park.id}"
     end

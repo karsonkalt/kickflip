@@ -45,6 +45,7 @@ nav {
     color: white;
     padding: 5px 25px;
     border-radius: 15px;
+    border: none;
 }
 
 .secondary-link {
@@ -79,6 +80,7 @@ nav {
 
 .large-column {
     width: 650px;
+    box-sizing: border-box;
 }
 
 .stacked-container {
@@ -107,6 +109,10 @@ nav {
     background-color: #F4F4F4;
 }
 
+.single-column {
+    padding: 30px;
+}
+
 .small-column {
     width: 260px;
     padding: 30px;
@@ -115,6 +121,54 @@ nav {
 .card-item {
     display: inline-block;
     margin-bottom: 30px;
+}
+
+.form-item {
+    margin-bottom: 15px;
+    font-family: 'Roboto';
+}
+
+.form-item .text-label {
+    display: inline-block;
+    width: 100px;
+}
+
+.text-input {
+    padding: 7px 15px;
+    font-size: 14px;
+    width: 250px;
+    border: 1px solid #dbdbdb;
+    border-radius: 15px;
+}
+
+.time-input {
+    padding: 7px 15px;
+    font-size: 14px;
+    width: 100px;
+    border: 1px solid #dbdbdb;
+    border-radius: 15px;
+}
+
+.text-input:focus {
+    outline: none;
+    border: 1px solid #0060D0;
+}
+
+.form-item select {
+    padding: 7px 15px;
+    font-size: 14px;
+    width: 100px;
+    border: 1px solid #dbdbdb;
+    border-radius: 0;
+}
+
+.form-item input:focus {
+    outline: none;
+    border: 1px solid #0060D0;
+}
+
+.checkbox-label {
+    margin-left: 15px;
 }
 
 h1 {

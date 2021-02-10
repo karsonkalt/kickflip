@@ -1,43 +1,106 @@
-<br><br><br><br><br><h2>Add New Park</h2>
+<div class="large-column card stacked-container single-column">
+    <h1 class="card-item">Add New Park</h1>
     <form action="../parks" method="post">
-        <label for="name">Name*</label><br>
-        <input id="name" type="text" name="name" required><br>
+        <div class="form-item">
+            <label class="text-label"  for="name">Name*</label>
+            <input class="text-input" id="name" type="text" name="name" required>
+        </div>
 
-        <label for="street">Street*</label><br>
-        <input id="street" type="text" name="street" required><br>
+        <div class="form-item">
+            <label class="text-label" for="street">Street*</label>
+            <input class="text-input" id="street" type="text" name="street" required>
+        </div>
 
-        <label for="city">City*</label><br>
-        <input id="city "type="text" name="city" required><br>
+        <div class="form-item">
+            <label class="text-label"  for="city">City*</label>
+            <input class="text-input" id="city "type="text" name="city" required>
+        </div>
 
-        <label for="state">State*</label><br>
-        <input id="state" type="text" name="state" required><br><br>
+        <div class="form-item">
+            <label label class="text-label" for="state">State*</label>
+            <select name="state" id="state" required>
+                <option value="AL">AL</option>
+                <option value="AK">AK</option>
+                <option value="AR">AR</option>	
+                <option value="AZ">AZ</option>
+                <option value="CA">CA</option>
+                <option value="CO">CO</option>
+                <option value="CT">CT</option>
+                <option value="DC">DC</option>
+                <option value="DE">DE</option>
+                <option value="FL">FL</option>
+                <option value="GA">GA</option>
+                <option value="HI">HI</option>
+                <option value="IA">IA</option>	
+                <option value="ID">ID</option>
+                <option value="IL">IL</option>
+                <option value="IN">IN</option>
+                <option value="KS">KS</option>
+                <option value="KY">KY</option>
+                <option value="LA">LA</option>
+                <option value="MA">MA</option>
+                <option value="MD">MD</option>
+                <option value="ME">ME</option>
+                <option value="MI">MI</option>
+                <option value="MN">MN</option>
+                <option value="MO">MO</option>	
+                <option value="MS">MS</option>
+                <option value="MT">MT</option>
+                <option value="NC">NC</option>	
+                <option value="NE">NE</option>
+                <option value="NH">NH</option>
+                <option value="NJ">NJ</option>
+                <option value="NM">NM</option>			
+                <option value="NV">NV</option>
+                <option value="NY">NY</option>
+                <option value="ND">ND</option>
+                <option value="OH">OH</option>
+                <option value="OK">OK</option>
+                <option value="OR">OR</option>
+                <option value="PA">PA</option>
+                <option value="RI">RI</option>
+                <option value="SC">SC</option>
+                <option value="SD">SD</option>
+                <option value="TN">TN</option>
+                <option value="TX">TX</option>
+                <option value="UT">UT</option>
+                <option value="VT">VT</option>
+                <option value="VA">VA</option>
+                <option value="WA">WA</option>
+                <option value="WI">WI</option>	
+                <option value="WV">WV</option>
+                <option value="WY">WY</option>
+            </select>
+        </div>
         
-        <br><br>
-        
-        <label>Permitted</label><br>
-        
-        <input type="hidden" name="skateboard_permitted" value ="false">
-        <input id="skateboard_permitted" type="checkbox" name="skateboard_permitted" value="true">
-        <label for="skateboard_permitted">Skateboards Permitted</lablel><br>
+        <div class="form-item">
+            <input type="hidden" name="skateboard_permitted" value ="false">
+            <input class="ckeckbox-input" id="skateboard_permitted" type="checkbox" name="skateboard_permitted" value="true" checked>
+            <label class="checkbox-label" for="skateboard_permitted">Skateboards Permitted</lablel>
+        </div>
 
+        <div class="form-item">
+            <input type="hidden" name="scooter_permitted" value="false">
+            <input class="ckeckbox-input" id="scooter_permitted" type="checkbox" name="scooter_permitted" value="true">
+            <label class="checkbox-label" for="scooter_permitted">Scooters Permitted</lablel>
+        </div>
         
-        <input type="hidden" name="scooter_permitted" value="false">
-        <input id="scooter_permitted" type="checkbox" name="scooter_permitted" value="true">
-        <label for="scooter_permitted">Scooters Permitted</lablel><br>
+        <div class="form-item">
+            <input type="hidden" name="bike_permitted" value ="false">
+            <input class="ckeckbox-input" id="bike_permitted" type="checkbox" name="bike_permitted" value="true">
+            <label class="checkbox-label" for="bike_permitted">Bikes Permitted</lablel>
+        </div>
         
-        
-        <input type="hidden" name="bike_permitted" value ="false">
-        <input id="bike_permitted" type="checkbox" name="bike_permitted" value="true">
-        <label for="bike_permitted">Bikes Permitted</lablel><br>
-        
+        <div class="form-item">
+            <label label class="text-label" for="open_time">Open Time</label>
+            <input class="time-input" id="open_time" type="text" name="open_time">
+        </div>
 
+        <div class="form-item"> 
+            <label class="text-label" for="close_time">Close Time</label>
+            <input class="time-input" id="close_time" type="text" name="close_time">
+        </div>
 
-        <label for="open_time">Open Time</label><br>
-        <input id="open_time" type="text" name="open_time"><br>
-
-        <label for="close_time">Close Time</label><br>
-        <input id="close_time" type="text" name="close_time"><br>
-
-
-        <input type="submit" value="Create Park">
+        <input class="action-link" type="submit" value="Create Park">
     </form>
+</div>
