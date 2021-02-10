@@ -23,7 +23,12 @@
       <a class="nav-item main-nav" href="/users">Users</a>
     </div>
     <div class="navbar-right-items"> 
-      <a class="action-link" href="/login">Login</a>
+      <% if logged_in? == false %>
+        <a class="action-link" href="/login">Login</a>
+      <% else %>  
+        <a class="nav-item main-nav" href="/users/<%=current_user.id%>"><%= current_user.username %></a>
+        <a class="action-link" href="/logout">Logout</a>
+      <% end %>
     </div>
   </div>
 </nav>

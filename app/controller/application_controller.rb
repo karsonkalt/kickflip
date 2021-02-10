@@ -43,7 +43,6 @@ class ApplicationController < Sinatra::Base
 
     get '/users/:id' do
         @user = User.find(params[:id])
-        binding.pry
         erb :"users/show"
     end
 
@@ -51,7 +50,6 @@ class ApplicationController < Sinatra::Base
         erb :"sessions/login"
     end
 
-    #sessions are not persisting??
     post '/login' do
         user = User.find_by(email: params["email"])
         session[:user_id] = user.id
