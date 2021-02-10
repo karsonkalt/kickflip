@@ -46,6 +46,11 @@ nav {
     padding: 5px 25px;
     border-radius: 15px;
     border: none;
+    transition: background-color .25s, color .25s;
+}
+
+.action-link:hover {
+    background-color: #005dba;
 }
 
 .secondary-link {
@@ -57,10 +62,14 @@ nav {
     padding: 5px 25px;
     border-radius: 15px;
     height: 50px;
+    background-color: white;
+    transition: background-color .25s, border .25s, color .25s;
 }
 
-.action-link:hover {
-    background-color: #0060D0;
+.secondary-link:hover {
+    background-color: #edf6ff;
+    border: 2px solid #004691;
+    color: #004691;
 }
 
 .page-body {
@@ -71,6 +80,7 @@ nav {
 
 .page-container {
     box-sizing: border-box;
+    align-items: flex-start;
     padding-top: 80px;
     width: 1000px;
     min-height: 100vh;
@@ -81,6 +91,10 @@ nav {
 .large-column {
     width: 650px;
     box-sizing: border-box;
+}
+
+.medium-column {
+    width: 485px;
 }
 
 .stacked-container {
@@ -109,10 +123,9 @@ nav {
     background-color: #F4F4F4;
 }
 
-.single-column {
+.padded-card {
     padding: 30px;
 }
-
 .small-column {
     width: 260px;
     padding: 30px;
@@ -121,6 +134,26 @@ nav {
 .card-item {
     display: inline-block;
     margin-bottom: 30px;
+}
+
+.sub-card {
+    border: 1px solid #dbdbdb;
+    background-color: #fafafa;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: border .25s, background-color .25s;
+}
+
+.sub-card:hover {
+    border: 1px solid #9e9e9e;
+    background-color: #ededed;
+}
+
+.sub-card h3, .sub-card h4 {
+    margin: 0;
+    text-decoration: none;
 }
 
 .form-item {
