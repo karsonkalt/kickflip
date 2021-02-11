@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
     #Relationships
     has_many :skate_sessions
+    has_many :user_tricks
     has_many :parks, through: :skate_sessions
+    has_many :tricks, through: :user_tricks
 
     #Validations
     validates :username, presence: true, uniqueness: true
