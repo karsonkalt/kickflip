@@ -49,4 +49,5 @@ class Park < ActiveRecord::Base
             nil
         end
     end
+
 end

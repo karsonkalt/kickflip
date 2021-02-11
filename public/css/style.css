@@ -330,7 +330,15 @@ h4 {
     font-family: 'Roboto';
     font-size: 12px;
     color: #949494;
-    text-decoration: underline
+    text-decoration: underline;
+    border: none;
+    background: none;
+}
+
+.small-spacer {
+    margin-top:10px;
+    position: relative;
+    left: -7px;
 }
 
 .badge {

@@ -69,6 +69,11 @@ class ApplicationController < Sinatra::Base
         redirect "/parks/#{park.id}"
     end
 
+    get '/users' do
+        @users = User.top_users
+        erb :"users/index"
+    end
+
     get '/users/:id' do
         @user = User.find(params[:id])
         erb :"users/show"
@@ -89,10 +94,22 @@ class ApplicationController < Sinatra::Base
         redirect "/users/#{user.id}"
     end
 
+    get '/users/:id/skate-sessions' do
+        redirect_if_user_not_authorized(User.find(params[:id]))
+        @user = User.find(params[:id])
+        erb :"users/skate_sessions"
+    end
+
     post '/skate-sessions' do
         park_id = params["park_id"].to_i
         SkateSession.create(user_id: current_user.id, park_id: park_id)
         redirect "/parks/#{park_id}"
+    end
+
+    delete '/skate-sessions/:id' do
+        skate_session = SkateSession.find(params[:id])
+        skate_session.destroy
+        redirect "/users/#{params[:user_id]}/skate-sessions"
     end
 
     get '/login' do

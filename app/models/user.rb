@@ -42,6 +42,14 @@ class User < ActiveRecord::Base
         end
     end
 
+    def date_of_most_recent_skate_session
+        if self.most_recent_skate_session
+            most_recent_skate_session.created_at.strftime("%B %d, %I:%M %p")
+        else
+            nil
+        end
+    end
+
     def minutes_since_most_recent_skate_session
         if self.skate_sessions != []
             time = Time.now - self.most_recent_skate_session.created_at
@@ -54,7 +62,7 @@ class User < ActiveRecord::Base
 
     def mintutes_to_wait_to_log_skate_session
         if self.skate_sessions != []
-            5 - self.minutes_since_most_recent_skate_session
+            SkateSession.timeout - self.minutes_since_most_recent_skate_session
         else
             nil
         end
@@ -65,6 +73,21 @@ class User < ActiveRecord::Base
             self.mintutes_to_wait_to_log_skate_session > 0 ? false : true
         else
             true
+        end
+    end
+
+    def number_of_skate_sessions
+        self.skate_sessions.count
+    end
+
+    def self.top_users
+        counts = {}
+        self.all.each do |user|
+            counts[user] = user.number_of_skate_sessions
+        end
+
+        counts.sort_by {|user, number_of_skate_sessions| number_of_skate_sessions}.to_a.reverse[0..9].map do |sub_array|
+            sub_array[0]
         end
     end
 
