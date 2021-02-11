@@ -1,14 +1,14 @@
-<div class="medium-column">
-    <div class="card padded-card">
-        <h1>Top Users</h1>
-        <% @users.each do |user| %>
-            <a href="/users/<%=user.id%>">
-                <div class ="sub-card">
-                    <h3><%= user.username %></h3>
-                    <h4 class=""><%= user.number_of_skate_sessions %> Skate Sessions Logged</h4>
-                    <h4 class="">Last Skated <%=user.date_of_most_recent_skate_session%></h4>
-                </div>
-            </a>
-        <% end %>
+<div class="single-medium-column">
+    <div class="card medium-column padded-card">
+            <h1>Top Users</h1>
+            <% @users.each do |user| %>
+                <a href="/users/<%=user.id%>">
+                    <div class ="sub-card">
+                        <h3><%= user.username %></h3>
+                        <h4 class=""><%= user.number_of_skate_sessions %> Skate Sessions Logged</h4>
+                        <h4 class="">Last Skated <%=user.date_of_most_recent_skate_session%></h4>
+                    </div>
+                </a>
+            <% end %>
+        </div>
     </div>
-</div>
