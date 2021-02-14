@@ -22,3 +22,5 @@ gem "activerecord", "~> 5.1"
 gem "bcrypt", "~> 3.1"
 
 gem "faker", "~> 2.2"
+
+gem "sinatra-flash", "~> 0.3.0"

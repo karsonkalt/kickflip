@@ -6,6 +6,7 @@ class ApplicationController < Sinatra::Base
         enable :sessions
         set :session_secret, "password"
         set :method_override, true
+        register Sinatra::Flash
     end
 
     get '/' do
@@ -47,6 +48,7 @@ class ApplicationController < Sinatra::Base
     post '/parks' do
         #Put in all param keys to initialize new park with.
         @park = Park.create(params)
+        flash[:success] = "#{@park.name} successfully added."
         redirect "/parks/#{@park.id}"
     end
 
@@ -66,6 +68,7 @@ class ApplicationController < Sinatra::Base
         park.bike_permitted = params[:bike_permitted]
         park.geocode
         park.save
+        flash[:success] = "#{park.name} successfully updated."
         redirect "/parks/#{park.id}"
     end
 
@@ -91,6 +94,7 @@ class ApplicationController < Sinatra::Base
         #Build user.password method
         user.email = params[:email]
         user.save
+        flash[:success] = "User info successfully updated."
         redirect "/users/#{user.id}"
     end
 
@@ -103,23 +107,27 @@ class ApplicationController < Sinatra::Base
     post '/skate-sessions' do
         park_id = params["park_id"].to_i
         SkateSession.create(user_id: current_user.id, park_id: park_id)
+        flash[:success] = "Checkin successfully added."
         redirect "/parks/#{park_id}"
     end
 
     delete '/skate-sessions/:id' do
         skate_session = SkateSession.find(params[:id])
         skate_session.destroy
+        flash[:info] = "Checkin deleted."
         redirect "/users/#{current_user.id}/skate-sessions"
     end
 
     post '/tricks' do
         trick_id = params["trick_id"].to_i
         UserTrick.create(user_id: current_user.id, trick_id: trick_id)
+        flash[:success] = "#{Trick.find(params["trick_id"]).name} added to your tricks."
         redirect "/users/#{current_user.id}"
     end
 
     delete '/tricks/:id' do
         user_trick = UserTrick.find_by(trick_id: params["trick_id"], user_id: current_user.id)
+        flash[:info] = "#{Trick.find(params["trick_id"]).name} removed from your tricks."
         user_trick.destroy
         redirect "/users/#{current_user.id}"
     end
@@ -132,14 +140,17 @@ class ApplicationController < Sinatra::Base
         user = User.find_by(email: params["email"])
         if user != nil
             session[:user_id] = user.id
+            flash[:success] = "Welcome back to Kickflip, #{user.username}!"
             redirect "/users/#{user.id}"
         else
+            flash[:error] = "Invalid login."
             redirect "login"
         end
     end
 
     get '/logout' do
         session.delete(:user_id)
+        flash[:info] = "Successfully logged out."
         redirect "/"
     end
 
@@ -149,9 +160,11 @@ class ApplicationController < Sinatra::Base
     end
 
     post '/users' do
-        if User.find_by_username(params[:username]) || User.find_by_email(params[:email])
-            #flash an error
-            binding.pry
+        if User.find_by_username(params[:username])
+            flash[:error] = "Username already taken."
+            redirect "/signup"
+        elsif User.find_by_email(params[:email])
+            flash[:error] = "Email already in use."
             redirect "/signup"
         else
             user = User.new
@@ -160,6 +173,7 @@ class ApplicationController < Sinatra::Base
             user.email = params[:email]
             user.save
             session[:user_id] = user.id
+            flash[:success] = "Welcome to Kickflip, #{user.username}!"
             redirect "/"
         end
     end
@@ -168,8 +182,6 @@ class ApplicationController < Sinatra::Base
         redirect "/"
     end
 
-
-    #how are the helper methods returning stuff?
     helpers do
         def current_user
             @current_user ||= User.find_by_id(session[:user_id])

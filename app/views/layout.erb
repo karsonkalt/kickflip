@@ -35,6 +35,14 @@
   </div>
 </nav>
 
+<div class="flash-container">
+  <% flash.each do |flash_type, message| %>
+    <div class="flash-item flash-<%=flash_type%>">
+      <%= message %>
+    </div>
+  <% end %>
+</div>
+
 <div class="page-body">
   <div class="page-container">
     <%= yield %>

@@ -83,16 +83,49 @@ nav {
     border: none;
 }
 
+.flash-container {
+    padding-top: 80px;
+    background-color: #EEEEEE;
+    display: flex;
+    justify-content: center;
+    flex-direction: center;
+}
+
+.flash-item {
+    width: 485px;
+    background-color: white;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.15);
+    overflow: hidden;
+    padding: 30px;
+}
+
+.flash-error {
+    background-color: #d64c4c;
+    color: white;
+}
+
+.flash-success {
+    background-color: #3fa74c;
+    color: white;
+}
+
+.flash-info {
+    background-color: #0076FF;
+    color: white;
+}
+
 .page-body {
     background-color: #EEEEEE;
     display: flex;
     justify-content: center;
 }
 
+
 .page-container {
     box-sizing: border-box;
     align-items: flex-start;
-    padding-top: 80px;
     width: 1000px;
     min-height: 100vh;
     display: flex;
