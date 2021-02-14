@@ -109,7 +109,19 @@ class ApplicationController < Sinatra::Base
     delete '/skate-sessions/:id' do
         skate_session = SkateSession.find(params[:id])
         skate_session.destroy
-        redirect "/users/#{params[:user_id]}/skate-sessions"
+        redirect "/users/#{current_user.id}/skate-sessions"
+    end
+
+    post '/tricks' do
+        trick_id = params["trick_id"].to_i
+        UserTrick.create(user_id: current_user.id, trick_id: trick_id)
+        redirect "/users/#{current_user.id}"
+    end
+
+    delete '/tricks/:id' do
+        user_trick = UserTrick.find_by(trick_id: params["trick_id"], user_id: current_user.id)
+        user_trick.destroy
+        redirect "/users/#{current_user.id}"
     end
 
     get '/login' do
