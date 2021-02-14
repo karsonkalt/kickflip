@@ -42,7 +42,7 @@ class Park < ActiveRecord::Base
 
     def top_x_users(x)
         if x == 1
-            self.top_users[0][0] #Returns single oject
+            self.top_users[0] #Returns single oject
         elsif x > 1
             self.top_users[0..(x-1)] #Returns array of arrays
         else

@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
 
     def parks_user_is_king_of
         top_parks = self.uniq_parks.select do |park|
-            park.top_x_users(1).id == self.id
+            park.top_x_users(1)[0].id == self.id
         end
         top_parks == [] ? nil : top_parks
     end
