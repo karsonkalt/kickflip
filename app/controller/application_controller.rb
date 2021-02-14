@@ -169,8 +169,8 @@ class ApplicationController < Sinatra::Base
             redirect "/signup"
         else
             user = User.new
-            #set the password
             user.username = params[:username]
+            user.password = params[:password]
             user.email = params[:email]
             user.save
             session[:user_id] = user.id
