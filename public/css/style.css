@@ -326,6 +326,18 @@ h4 {
     color: #949494;
 }
 
+.trick-link {
+    font-family: 'Roboto';
+    font-size: 12px;
+    color: #d4d4d4;
+    margin-left: 15px;
+}
+
+.trick-link:hover {
+    color: #b5b5b5;
+    text-decoration: underline;
+}
+
 .edit-info {
     font-family: 'Roboto';
     font-size: 12px;
