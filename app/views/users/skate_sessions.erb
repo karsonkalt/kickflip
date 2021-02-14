@@ -1,0 +1,16 @@
+<div class="medium-column">
+    <div class="card padded-card">
+        <h1><%=@user.username%> Park Checkins</h1>
+        <% @user.skate_sessions.each do |skate_session| %>
+            <div class ="sub-card">
+                <h4>Skated at <%=Park.find(skate_session.park_id).name%> on <%=skate_session.created_at_string%></h4>
+                <form action="/skate-sessions/<%=skate_session.id%>" method="post">
+                    <input type="hidden" value="delete" name="_method">
+                    <input type="hidden" name="skate_session_id" value ="<%=skate_session.id%>">
+                    <input type="hidden" name="user_id" value ="<%=skate_session.user_id%>">
+                    <button class="edit-info small-spacer" type="submit">Delete</button>
+                </form>
+            </div>
+        <% end%>
+    </div>
+</div>

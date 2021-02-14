@@ -1,0 +1,74 @@
+<div class="large-column stacked-container">
+    <div class="card two-part-card">
+        <div class="flat-bottom-card">
+            <h1><%= @user.username%> </h1>
+            <p class="user-body"><span class="badge"><%= @user.number_of_skate_sessions %></span> Park Checkins</p>
+            <% if @user.has_king_of_parks? %>
+                <% @user.parks_user_is_king_of.each do |park| %>
+                    <div class="top-parks">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="attribute-icon" width="24" height="24" viewBox="0 0 24 24"><path class="star" d="M3 16l-3-10 7.104 4 4.896-8 4.896 8 7.104-4-3 10h-18zm0 2v4h18v-4h-18z"/></svg>
+                        King of <%=park.name%>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+        <div class="flat-top-card">
+            <div class="centered">
+                <p class="timestamps">Joined: <%= @user.created_at.strftime("%a, %B %d, %Y") %></p>
+                <% if @user.skate_sessions != []%>
+                    <p class="timestamps">Last Skated: <%=@user.date_of_most_recent_skate_session%></p>
+                <% else %>
+                    <p class="timestamps">Last Skated: No checkins logged.</p>
+                <% end %>
+                <% if logged_in? && current_user.id == @user.id %>
+                    <p class="timestamps"><a class="edit-info" href="/users/<%=@user.id%>/edit">Edit My Info</a></p>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="card padded-card">
+        <div class="card-item attribute-list">
+        <h2><%=@user.username%>'s Tricks</h2>
+            <% Trick.all.each do |trick| %>
+                <!-- Logic to see if there is a user trick that matches. -->
+                <% if UserTrick.find_by(user_id: @user.id, trick_id: trick.id) %>
+                    <svg class="attribute-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path class="check" d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+                    <span class="attribute permitted"><%=trick.name%></span>
+                    <% if logged_in? && current_user.id == @user.id %>
+                        <form class="trick-link-container" action="/tricks/trick.id" method="post">
+                            <input type="hidden" value="delete" name="_method">
+                            <input type="hidden" name="trick_id" value ="<%=trick.id%>">
+                            <input class="trick-link" type="submit" value="Remove">
+                        </form>
+                    <% end %>
+                <% else %>
+                    <svg class="attribute-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path class="x" d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
+                    <span class="attribute not-permitted"><%=trick.name%></span>
+                    <% if logged_in? && current_user.id == @user.id %>
+                    <form class="trick-link-container" action="/tricks" method="post">
+                        <input type="hidden" name="trick_id" value ="<%=trick.id%>">
+                        <input class="trick-link" type="submit" value="Add">
+                    </form>
+                    <% end %>
+                <% end %>
+                <br>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<div class="small-column card">
+<h2>Top Parks</h2>
+<% if @user.skate_sessions != []%>
+    <% @user.top_x_parks(15).each do |park_array| %>
+            <div class="small-column-item">
+                <span class="badge"><%= park_array[1] %></span>  <a class="small-column-link" href="/parks/<%=park_array[0].id%>"><%= park_array[0].name %></a>
+            </div>
+    <% end %>
+    <% if logged_in? && @user.id == current_user.id %>
+        <a href="/users/<%=@user.id%>/skate-sessions" class="small-column-item edit-info">Edit My Checkins</a>
+    <% end %>
+<% else %>
+    <h4 class="small-column-item">No skate sessions have been logged yet.</h4>
+<% end %>
+</div>
