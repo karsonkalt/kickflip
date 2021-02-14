@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
 
     #Validations
     validates :username, presence: true, uniqueness: true
-    # validates :password, presence: true
+    validates :password_digest, presence: true
+    validates :email, presence: true
 
     # has_secure_password
     has_secure_password
@@ -82,6 +83,25 @@ class User < ActiveRecord::Base
     def number_of_skate_sessions
         self.skate_sessions.count
     end
+
+    def uniq_parks
+        self.parks.uniq do |park|
+            park.id
+        end
+    end
+
+    def parks_user_is_king_of
+        top_parks = self.uniq_parks.select do |park|
+            park.top_x_users(1).id == self.id
+        end
+        top_parks == [] ? nil : top_parks
+    end
+
+    def has_king_of_parks?
+        self.parks_user_is_king_of == nil ? false : true
+    end
+
+    #Class Methods
 
     def self.top_users
         counts = {}
