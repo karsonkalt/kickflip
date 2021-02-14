@@ -92,6 +92,7 @@ class ApplicationController < Sinatra::Base
         user = User.find(params[:id])
         user.username = params[:username]
         #Build user.password method
+        user.password = params[:password]
         user.email = params[:email]
         user.save
         flash[:success] = "User info successfully updated."
@@ -137,8 +138,8 @@ class ApplicationController < Sinatra::Base
     end
 
     post '/login' do
-        user = User.find_by(email: params["email"])
-        if user != nil
+        user = User.find_by(email: params["email"])&.authenticate(params['password'])
+        if user != false
             session[:user_id] = user.id
             flash[:success] = "Welcome back to Kickflip, #{user.username}!"
             redirect "/users/#{user.id}"

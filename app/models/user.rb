@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
     # validates :password, presence: true
 
     # has_secure_password
+    has_secure_password
 
     #Custom Methods
     def top_parks
