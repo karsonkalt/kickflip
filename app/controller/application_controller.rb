@@ -4,7 +4,7 @@ class ApplicationController < Sinatra::Base
         set :views, "app/views"
         set :public_dir, "public"
         enable :sessions
-        set :session_secret, "password"
+        set :session_secret, "Zt+gPPN/yrRg+sQyFmvRxOnIXNr8wamnmLkOGknhq9LYeSmPGdoSRVgq1rJ+gnLFTrF2WUe3vSj3orQ7"
         set :method_override, true
         register Sinatra::Flash
     end

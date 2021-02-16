@@ -12,8 +12,7 @@ class Search
     end
 
     def geoloc_results
-        #The /\h/ means any hexdigit character ([0-9a-fA-F])
-        if @query !=~ /\h/
+        if @query =~ /[0-9]/
             nil
         else
             Park.near(@query)
