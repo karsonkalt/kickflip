@@ -1,0 +1,10 @@
+<div class="single-medium-column">
+    <div class="card medium-column padded-card">
+    <h1 class="card-item">Are you sure you want to delete your account?</h1>
+    <h4>Deleting your account will also delete all your checkins and logged tricks.</h4>
+        <form action="/users/<%=@user.id%>" method="post">
+            <input type="hidden" value="delete" name="_method">
+            <input class="secondary-link delete-link" type="submit" value="Delete">
+        </form>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="single-medium-column">
+    <div class="card medium-column padded-card">
+    <h1 class="card-item">Are you sure you want to delete <%= @park.name%>?</h1>
+    <h4>Deleting <%= @park.name%> will also remove all user checkins for this park.</h4>
+        <form action="/parks/<%=@park.id%>" method="post">
+            <input type="hidden" value="delete" name="_method">
+            <input class="secondary-link delete-link" type="submit" value="Delete">
+        </form>
+    </div>
+</div>

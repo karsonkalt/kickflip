@@ -54,7 +54,8 @@
                     <button class="card-item action-link" type="submit">Checkin</button>
                 </form>
             <% elsif logged_in? && !current_user.can_record_skate_session %>
-                <span class="disabled-link card-item">Wait <%=current_user.mintutes_to_wait_to_log_skate_session%> minutes before you can checkin again</span>
+                <br/>
+                <div class="disabled-link">Wait <%=current_user.mintutes_to_wait_to_log_skate_session%> minutes before you can checkin again</div>
             <% end %>
         </div>
         <div class="flat-top-card">

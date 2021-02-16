@@ -2,7 +2,7 @@ class Search
     attr_accessor :query
 
     def initialize(query)
-        @query = query
+        @query = deparametrize(query)
     end
 
     def name_results
@@ -12,11 +12,24 @@ class Search
     end
 
     def geoloc_results
-        Park.near(@query)
+        #The /\h/ means any hexdigit character ([0-9a-fA-F])
+        if @query !=~ /\h/
+            nil
+        else
+            Park.near(@query)
+        end
     end
 
     def all_results
-        (self.geoloc_results + self.name_results).uniq
+        if self.geoloc_results
+            (self.geoloc_results + self.name_results).uniq
+        else
+            self.name_results
+        end
+    end
+
+    def deparametrize(str)
+        str.split("-").join(" ").capitalize
     end
         
 end

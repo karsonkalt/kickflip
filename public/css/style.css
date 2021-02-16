@@ -61,7 +61,6 @@ nav {
     color: #0076FF;
     padding: 5px 25px;
     border-radius: 15px;
-    height: 50px;
     background-color: white;
     transition: background-color .25s, border .25s, color .25s;
 }
@@ -70,6 +69,17 @@ nav {
     background-color: #edf6ff;
     border: 2px solid #004691;
     color: #004691;
+}
+
+.delete-link {
+    color: #d64c4c;
+    border: 2px solid #d64c4c;
+}
+
+.delete-link:hover {
+    color: #9e3838;
+    border: 2px solid #9e3838;
+    background-color: #ffe6e6;
 }
 
 .disabled-link {
@@ -81,6 +91,8 @@ nav {
     padding: 5px 25px;
     border-radius: 15px;
     border: none;
+    margin-bottom: 30px;
+    display: inline-block;
 }
 
 .flash-container {
