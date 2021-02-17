@@ -12,7 +12,9 @@ end
 #Create 100 Users
 100.times do
     username = Faker::Internet.username(specifier: 5..11)
-    attribute_hash = {username: username}
+    password = "password"
+    email = Faker::Internet.email
+    attribute_hash = {username: username, password: password, email: email}
     User.create(attribute_hash)
 end
 
