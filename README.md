@@ -13,6 +13,8 @@ Any visitor can see data about users and skateparks. Users who have an account c
 
 To install Kickflip, follow these steps:
 * You have installed all required `gems` in the `Gemfile` by running `bundle install`
+* Create your database by running `rake db:migrate`
+* (Optional) Seed your database with the default dummy data by running `rake db:seed`. The Parks created by the `faker` gem will not be valid with the geocoder gem.
 * Run `shotgun` in the terminal to start run the `ApplicationController`
 * Open the port in the browser (`shotgun` defaults to port 9393)
 
