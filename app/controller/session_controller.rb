@@ -7,7 +7,7 @@ class SessionController < ApplicationController
 
     post '/login' do
         user = User.find_by(email: params["email"])&.authenticate(params['password'])
-        if user != nil
+        if user
             session[:user_id] = user.id
             flash[:success] = "Welcome back to Kickflip, #{user.username}!"
             redirect "/users/#{user.id}"

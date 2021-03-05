@@ -5,22 +5,22 @@
         <input type="hidden" value="patch" name="_method">
         <div class="form-item">
             <label class="text-label"  for="name">Name*</label>
-            <input class="text-input" id="name" type="text" name="name" value="<%=@park.name%>" required>
+            <input class="text-input" id="name" type="text" name="park[name]" value="<%=@park.name%>" required>
         </div>
 
         <div class="form-item">
             <label class="text-label" for="street">Street*</label>
-            <input class="text-input" id="street" type="text" name="street" value="<%=@park.street%>" required>
+            <input class="text-input" id="street" type="text" name="park[street]" value="<%=@park.street%>" required>
         </div>
 
         <div class="form-item">
             <label class="text-label"  for="city">City*</label>
-            <input class="text-input" id="city "type="text" name="city" value="<%=@park.city%>" required>
+            <input class="text-input" id="city "type="text" name="park[city]" value="<%=@park.city%>" required>
         </div>
 
         <div class="form-item">
             <label label class="text-label" for="state">State*</label>
-            <select name="state" id="state" required>
+            <select name="park[state]" id="state" required>
                 <% options_for_select = ['AK', 'AL', 'AR', 'AS', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'GU', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MP', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UM', 'UT', 'VA', 'VI', 'VT', 'WA', 'WI', 'WV', 'WY'] %>
                 <% options_for_select.each do |state| %>
                     <% if @park.state == state %>
@@ -33,7 +33,7 @@
         </div>
         
         <div class="form-item">
-            <input type="hidden" name="skateboard_permitted" value ="false">
+            <input type="hidden" name="park[skateboard_permitted]" value ="false">
             <% if @park.skateboard_permitted == true %>
                 <input class="ckeckbox-input" id="skateboard_permitted" type="checkbox" name="skateboard_permitted" value="true" checked>
             <% else %>
@@ -43,7 +43,7 @@
         </div>
 
         <div class="form-item">
-            <input type="hidden" name="scooter_permitted" value="false">
+            <input type="hidden" name="park[scooter_permitted]" value="false">
             <% if @park.scooter_permitted == true %>
                 <input class="ckeckbox-input" id="scooter_permitted" type="checkbox" name="scooter_permitted" value="true" checked>
             <% else %>
@@ -53,7 +53,7 @@
         </div>
         
         <div class="form-item">
-            <input type="hidden" name="bike_permitted" value ="false">
+            <input type="hidden" name="park[bike_permitted]" value ="false">
             <% if @park.bike_permitted == true %>
                 <input class="ckeckbox-input" id="bike_permitted" type="checkbox" name="bike_permitted" value="true" checked>
             <% else %>
